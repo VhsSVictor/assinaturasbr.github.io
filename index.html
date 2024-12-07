@@ -3,7 +3,6 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Venda de Assinaturas</title>
   <link rel="stylesheet" href="styles.css">
   <script defer src="scripts.js"></script>
@@ -12,32 +11,32 @@
   <header>
     <nav>
       <ul>
-        <li><a href="#comprar">Comprar</a></li>
-        <li><a href="#avaliacoes">Avaliações</a></li>
-        <li><a href="#suporte">Suporte</a></li>
-        <li><a href="#conta">Conta</a></li>
+        <li><a href="#" onclick="showTab('comprar')">Comprar</a></li>
+        <li><a href="#" onclick="showTab('avaliacoes')">Avaliações</a></li>
+        <li><a href="#" onclick="showTab('suporte')">Suporte</a></li>
+        <li><a href="#" onclick="showTab('conta')">Conta</a></li>
       </ul>
     </nav>
   </header>
-  
+
   <main>
-    <section id="comprar">
+    <section id="comprar" class="tab-content">
       <h1>Assinaturas Disponíveis</h1>
       <div class="planos">
         <div class="plano">
           <h2>Básico</h2>
           <p>Acesso limitado por R$ 29,90/mês</p>
-          <button>Comprar</button>
+          <button onclick="comprar('Básico')">Comprar</button>
         </div>
         <div class="plano">
           <h2>Premium</h2>
           <p>Acesso total por R$ 49,90/mês</p>
-          <button>Comprar</button>
+          <button onclick="comprar('Premium')">Comprar</button>
         </div>
       </div>
     </section>
 
-    <section id="avaliacoes">
+    <section id="avaliacoes" class="tab-content" style="display:none;">
       <h1>Avaliações</h1>
       <div class="comentarios">
         <p>"Ótimo serviço!" - João</p>
@@ -45,29 +44,33 @@
       </div>
     </section>
 
-    <section id="suporte">
+    <section id="suporte" class="tab-content" style="display:none;">
       <h1>Suporte</h1>
-      <form>
+      <form onsubmit="enviarSuporte(event)">
         <label for="nome">Nome:</label>
         <input type="text" id="nome" name="nome" required>
-        
         <label for="mensagem">Mensagem:</label>
         <textarea id="mensagem" name="mensagem" required></textarea>
-        
         <button type="submit">Enviar</button>
       </form>
     </section>
 
-    <section id="conta">
+    <section id="conta" class="tab-content" style="display:none;">
       <h1>Área da Conta</h1>
-      <form id="login-form">
+      <form id="login-form" onsubmit="logar(event)">
         <label for="email">E-mail:</label>
         <input type="email" id="email" name="email" required>
-        
         <label for="senha">Senha:</label>
         <input type="password" id="senha" name="senha" required>
-        
         <button type="submit">Entrar</button>
+      </form>
+      <form id="registro-form" onsubmit="registrar(event)" style="display:none;">
+        <h3>Criar conta</h3>
+        <label for="novo-email">E-mail:</label>
+        <input type="email" id="novo-email" required>
+        <label for="nova-senha">Senha:</label>
+        <input type="password" id="nova-senha" required>
+        <button type="submit">Registrar</button>
       </form>
     </section>
   </main>
